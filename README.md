@@ -1,4 +1,4 @@
-# Dtto-Modular-Robot
+# Dtto Modular Robot
 Dtto Robot v1.0 , a modular self-reconfigurable robot
 
 ![alt tag](/IMAGES/1s.jpg)
@@ -34,4 +34,13 @@ This project is entirely licensed under the CC BY-SA 4.0 license. (http://creati
 - 1 Bluetooth HC-06
 - 1 RF. NRF2401+
 - 1 WS2812 LED RGB
+
+
+#VIDEOS
+
+One module moving, connection mechanism:
+https://www.youtube.com/watch?v=O0k1wR8lxH4
+
+Two modules connecting, moving and disconecting:
+https://www.youtube.com/watch?v=2cLM48vNh7w
 
