@@ -1,0 +1,67 @@
+*****by otrebla 333 - 03/03/2016 *****
+
+Note: Please note that this programs have been written with the only purpose 
+of testing the module capabilities.It does not pretend to be fancy or efficient 
+in any way. It is designed to test my modules with an specific app on my phone,
+but you can use any BT Spp tools app or terminal on the web.
+
+Instructions:
+
+Once programmed onto the modules (1 master, 2 master & slave), you can connect 
+with the master by bluetooth (previously paired).
+
+To talk with the master, all commands must be started by 'w'.
+To talk to the slave, all commands must be started by 's'.
+Every command has to end with a point '.'.
+Note that you have to exit a mode before entering the next.
+
+You can start by checking the connection with the master with the HELP command:
+
+	wh.
+
+If the connection is correct and the master is listening, he will tell you what 
+commands is he actually able to do (possibly not updated).
+
+You can tell him to go to the start position, where all servos are in the middle
+(note that my code uses 83 degrees, it depends on how well you positioned the servo).
+
+	ws.
+
+It will remain in this start position until you exit this mode:
+
+	we.
+
+You can also try the snake feature with this command:
+
+	wr.
+
+Then it will ask you which direction will you go, you can try any of this:
+
+	wm.
+
+	wf.
+
+if you want to pause the snake:
+
+	wp.
+
+you can choose the direction again or exit the mode:
+
+	we.
+
+There is also a manual mode where you can tell the servo what position to go:
+
+	wm.
+
+The format of the data is the next:
+
+	wM180. // This tells the servo of the Male part to rotate to 180º
+	wF135. // Servo Female to 135º
+	wB000. // Servo Base to 0º
+	wR090. // Servo Right to 90º
+	wL101. // Servo Left to 101º
+	wXxxx. //etc.....
+
+To exit the manual mode, 'we.'.
+
+If you want to talk to the slave module, you will have to change the first 'w' to an 's'.
