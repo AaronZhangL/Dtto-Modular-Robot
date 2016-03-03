@@ -44,3 +44,14 @@ https://www.youtube.com/watch?v=O0k1wR8lxH4
 Two modules connecting, moving and disconecting:
 https://www.youtube.com/watch?v=2cLM48vNh7w
 
+#CONFIGURATIONS
+
+This is a small model showing some of the different configurations of the robot.
+
+![alt tag](/IMAGES/11s.jpg)
+
+![alt tag](/IMAGES/12s.jpg)
+
+![alt tag](/IMAGES/14s.jpg)
+
+![alt tag](/IMAGES/15s.jpg)
