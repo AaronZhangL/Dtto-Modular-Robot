@@ -19,7 +19,6 @@ It has been fully printed with open-source 3D printers, uses open-source hardwar
 
 This robot is Inspired by the MTRAN III, by The National Institute of Advanced Industrial Science and Technology (AIST), Japan. (https://unit.aist.go.jp/is/frrg/dsysd/mtran3/index.htm)
 
-This project is entirely licensed under the CC BY-SA 4.0 license. (http://creativecommons.org/licenses/by-sa/4.0/legalcode)
 
 #SPECIFICATIONS
 
@@ -55,3 +54,7 @@ This is a small model showing some of the different configurations of the robot.
 ![alt tag](/IMAGES/14s.jpg)
 
 ![alt tag](/IMAGES/15s.jpg)
+
+#LICENSE
+
+This project and all of it's files, images and texts are entirely licensed under the CC BY-SA 4.0 license. (http://creativecommons.org/licenses/by-sa/4.0/legalcode)
