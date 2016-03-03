@@ -1,0 +1,17 @@
+*****by otrebla 333 - 03/03/2016 *****
+
+These files have been designed to print with my personal printer,a Prusa i3
+with a 0.4 nozzle and using ABS. I've printed all of them at a .25 mm layer
+height.
+
+The assembly of the parts is very simple, but the tricky part is how to manage
+all the cables throught the arm. 
+
+I will be creating the instrucions in this file as you ask.
+
+The actual model is the 1.0. There will be updates soon.
+
+There is a small model to print and simulate the big robot! 
+
+Thanks!
+
