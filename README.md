@@ -37,11 +37,15 @@ This robot is Inspired by the MTRAN III, by The National Institute of Advanced I
 
 #VIDEOS
 
+![alt tag](/IMAGES/18s.jpg)
+
 One module moving, connection mechanism:
 https://www.youtube.com/watch?v=O0k1wR8lxH4
 
 Two modules connecting, moving and disconecting:
 https://www.youtube.com/watch?v=2cLM48vNh7w
+
+
 
 #CONFIGURATIONS
 
