@@ -19,6 +19,7 @@ It has been fully printed with open-source 3D printers, uses open-source hardwar
 
 This robot is Inspired by the MTRAN III, by The National Institute of Advanced Industrial Science and Technology (AIST), Japan. (https://unit.aist.go.jp/is/frrg/dsysd/mtran3/index.htm)
 
+Follow the project: https://hackaday.io/project/9976-dtto-v10-modular-robot
 
 #SPECIFICATIONS
 
@@ -38,6 +39,9 @@ This robot is Inspired by the MTRAN III, by The National Institute of Advanced I
 #VIDEOS
 
 ![alt tag](/IMAGES/18s.jpg)
+
+Three modules rolling
+https://www.youtube.com/watch?v=pWOIe7kMd5U
 
 One module moving, connection mechanism:
 https://www.youtube.com/watch?v=O0k1wR8lxH4
