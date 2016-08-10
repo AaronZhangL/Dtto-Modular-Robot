@@ -1,6 +1,9 @@
 # Dtto Modular Robot
 Dtto Robot v1.0 , a modular self-reconfigurable robot
 
+A better and up to date description is available at: 
+https://hackaday.io/project/9976-dtto-v10-modular-robot
+
 ![alt tag](/IMAGES/1s.jpg)
 
 The <strong>Dtto v1.0 </strong> Robot is a modular transformable robot designed to be versatile, flexible and <strong>self-reconfigurable</strong>. The idea of modular robots is that they can adopt any shape they want, by changing the position and the connection of their modules. 
