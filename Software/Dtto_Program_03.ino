@@ -1,6 +1,6 @@
 /*
  * Código módulos Dtto:  robot modular transformable
- * Alberto Molina Pérez - URV
+ * Alberto Molina Pérez 
  * */
 
 
@@ -16,32 +16,31 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-/////DEFINICIONES/////
+/////DEFINITIONS///// 
 
-#define DttoType 1//0 for MASTER; 1 for SLAVE
-#define METALGEAR 0 //0 for NO, 1 for YES
+#define DttoType 0//0 for MASTER module; 1 for the rest of SLAVE modules
+#define METALGEAR 1 //0 for NO, 1 for YES (If you are using the MG92B,use 1. If using SG92R, use 0.
 
 #define PIN 19 //Pin Neopixel
 
 #define CE_PIN 2  //RF pin
 #define CSN_PIN 4  //RF pin
 
-
-int SCenterM =83;
+int SCenterM =83;     //Center position of Male and Female main motors
 int SCenterF =83;
-#define SCenterB 83
+#define SCenterB 83   //Center, min and max position of coupling mechanism
 #define SMinB 5
 #define SMaxB 150
 
-/////CONTROL SINUSOIDAL /////
+/////CONTROL SINUSOIDAL (snake movement) /////
 
 
-#define vel 0.002 //Velocidad (w)
+#define vel 0.002 //Speed (w)
 //
-int ampl = 40; //Amplitud
-float desfase = 3.14; // Desfase entre modulos(motores*2)
+int ampl = 40; //Amplitude
+float desfase = 3.14; // Phase between modules(motores*2)
 float desfaseint = 3.14;
-unsigned long t = 0;
+unsigned long t = 0;    //Time auxiliar variables
 unsigned long t2 = 0;
 unsigned long t_start=0;
 byte reset=1;
@@ -52,8 +51,9 @@ byte reset=1;
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, PIN, NEO_GRB + NEO_KHZ800);  //number of pix, arduino PIN, pixel type flags
 
-SoftwareSerial bluetooth(7,8); //RX TX
+SoftwareSerial bluetooth(7,8); //Creating software serial for bluetooth module (RX,TX)
 
+//NRF module configuration
 const uint64_t pipes[2] = {0xE8E8F0F0E1LL,0xF0F0F0F0D2LL}; // Define the transmit pipe rf
 char RFData[6];
 char addmodRF[2]={'a','+'};
@@ -62,13 +62,13 @@ RF24 radio(CE_PIN, CSN_PIN); // Create a Radio
 /////VARIABLES PROGRAMA/////
 
 //bt
-char rxChar;    // Variable para recibir datos del puerto serie
+char rxChar;    // Serial port receiving variable
 int ledpin = 13;  // Pin donde se encuentra conectado el led (pin 13)
 
-String rxDataBT; //Datos recibidos por BT
-char rxDataBT2[6]; //Datos recibidos por BT convertidos a char array
-char rxDataRF[6]; //Data recibida por RF, valorar si es para ese modulo
-char rxData[6]; //Data internal para el modulo
+String rxDataBT; //Datos recibidos por BT - BT received data
+char rxDataBT2[6]; //Datos recibidos por BT convertidos a char array - BT data converted to char array
+char rxDataRF[6]; //Data recibida por RF, valorar si es para ese modulo - NRF received data
+char rxData[6]; //Data internal para el modulo - Clean received data
 char rxServo;
 int angle;
 int w0;
@@ -80,7 +80,7 @@ int j=0;
 int modnum=1;
 int modtotal=1;
 
-//SERVOS
+//SERVO definitions (Calibrate according to real module for accuracy)
 Servo servoM;
 int posM = 82;//MIN 001, MAX 172
 Servo servoF;
@@ -92,9 +92,9 @@ int posR= 80;
 Servo servoL;
 int posL = 80;
 
-///// VARIABLES MOVIMIENTO CIRCULO
+///// Rotating movement variables
 
-#define vel2 0.001 //Velocidad (w)
+#define vel2 0.001 //Speed (w)
 byte stepc = 0;
 byte inicio=0;
 byte next = 0;
@@ -108,7 +108,7 @@ byte next = 0;
 void setup() 
 {
 
-    if (METALGEAR)
+    if (METALGEAR) //Correcting for MG92B motors
     {
       SCenterM =90;
       SCenterF =90;
@@ -117,10 +117,10 @@ void setup()
     Serial.begin(9600);
     delay(3000);
     
-    radio.begin();
+    radio.begin();  //Starts NRF (radio)
     //radio.setRetries(15,5); //Intentos de reenvio en caso de mala comunicacion
     
-    if (DttoType==0)
+    if (DttoType==0)      //If module is a master: Start bluetooth and writing channel NRF radio
     {
       bluetooth.begin(9600);
       bluetooth.println("Reset");
@@ -129,15 +129,15 @@ void setup()
       //radio.openWritingPipie(pipes[2]);
       radio.startListening();
     }
-    else
+    else                  //IF module is a slave: Start reading channel NRF radio
     {
       radio.openWritingPipe(pipes[1]);
       radio.openReadingPipe(1,pipes[0]);
       //radio.openReadingPipe(2,pipes[2]);  
     }
   
-    if (DttoType==1) getmodulenum(); //Asignar un numero al modulo esclavo conectado
-
+    if (DttoType==1) getmodulenum(); //If slave, ask master module for a number
+    //Start Neopixel LED
     strip.begin();
     strip.setBrightness(255);
     strip.setPixelColor(0,0,100,0);
