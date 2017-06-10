@@ -1,0 +1,40 @@
+Hello!
+
+First you should know that there is a 'master' module that you configure in the 'DttoType' definition (line 21 of 
+v03 code). If you only have one module, this DttoType should be '0' (master). If you add more modules, you should 
+program them with DttoType '1' (slave).
+
+When they are connected, each module gets a number depending on the connection order (1,2,3...).
+
+The bluetooth commands go to the rxData char array, and work like this:
+
+- 1st character(rxData[0]): Char identifying the module you want to talk to. Ej. If you want to talk to module 1, 
+this char should be '1'. If you want to talk to all the modules at the same time, you have to use athe char 'a' (all).
+
+- 2nd character (rxData[1]):  This char is the action that the modules, or all modules, have to do. In the main 
+loop 'void loop()' you have a switch case that, depending on the char on rxData[1], calls a function on the code. 
+For example, if you want to call the test function, this char should be 't'.
+    Command list 'rxData[1]' :
+      - 's' start. moves all servomotors to the central position
+      - 'r' run. starts snake movenent; 'rxData[2]' must indicate direction('m' or 'f')
+      - 'e' escape. stops all other functions.
+      - 'g' gancho (hook). Moves the hooks of the mechanical connection; 
+        -'rxData[2]' must indicate which hook to move ('b' base, 'r' right face, 'l' left face)
+        -'rxData[3]' must indicate which position to move the hook to ('0' center(hide), '1' and '2' couple or decouple)
+      - 't' test. test the RGB LED on the modules
+      - 'a' amplitude (experimental). change amplitude of the sinusoidal movement
+      - 'f' fase (phase). change phase between motors of the sinusoidal movement
+
+- 3rd, 4th,5... char: These characters are used as parameters in some functions, so you have to check in every 
+function what does exactly do.
+
+Examples of instructions:
+  - 'arm' (All-Run-Male) starts snake movement in the male direction
+  - 'at' (All-Test) blinks the RGB LED
+  - '2gb0' (2ndmodule-Gancho(hook)-Base-0)moves the hook of the 2nd module to the central position
+  - 'ae' (All-Escape) stops all functions, motors, LEDs of all motors.
+
+Sorry for the bad commented code, I still have to fix it a LOT...
+
+
+Alberto
