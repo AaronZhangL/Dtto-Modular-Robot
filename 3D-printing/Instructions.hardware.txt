@@ -9,7 +9,7 @@ all the cables throught the arm.
 
 I will be creating the instrucions in this file as you ask.
 
-The actual model is the 1.0. There will be updates soon.
+The actual model is the 2.0.1 There will be updates soon.
 
 There is a small model to print and simulate the big robot! 
 
